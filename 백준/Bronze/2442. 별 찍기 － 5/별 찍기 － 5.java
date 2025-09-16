@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder(); // 즉시 출력하는 방법말고, 스트링빌더로 한번에 모아서 출력하기
 
         int n = Integer.parseInt(br.readLine());
 
@@ -14,12 +15,15 @@ public class Main {
 
         for (int i = 1; i < n + 1; i++) {
             for (int k = 0; k < n - i; k++) {
-                System.out.printf(" ");
+                sb.append(" ");
+//                System.out.printf(" ");
             }
             for (int j = 0; j < (2 * i - 1); j++) {
-                System.out.print(star);
+                sb.append(star);
+//                System.out.print(star);
             }
-            System.out.println();
+            sb.append("\n");
         }
+        System.out.print(sb);
     }
 }

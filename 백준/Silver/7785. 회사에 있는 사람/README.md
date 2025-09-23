@@ -1,15 +1,9 @@
 # [Silver V] 회사에 있는 사람 - 7785 
 
-[문제 링크](https://www.acmicpc.net/problem/7785) 
-```java
-// 처음 풀이에서 HashSet을 사용하여 내림차순 정렬을 위해 set -> list -> sort/ reverseOrder() 를 사용했는데 이외에도
+[벨로그 추가 풀이](https://www.acmicpc.net/problem/7785) 
 
-Set<String> set = new TreeSet<>(Collections.reverseOrder()); // TreeSet을 사용하여 내림차순 정렬로 저장하는 방법
----
-set.stream()
-   .sorted(Comparator.reverseOrder())
-   .forEach(System.out::println); // stream을 사용하여 정렬과 출력을 한번에 하는 방법도 있음
-```
+[문제 링크](https://www.acmicpc.net/problem/7785) 
+
 ### 성능 요약
 
 메모리: 53092 KB, 시간: 680 ms

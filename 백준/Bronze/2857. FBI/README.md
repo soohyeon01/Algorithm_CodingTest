@@ -30,5 +30,29 @@
 
 
 ```java
+/**
+ * 처음 풀이방식으로는 boolean 값으로 요원의 유무를 판단하였는데,
+ count의 값을 0으로 셋팅하는 방법과, StringBuilder를 사용하여 문자열의 길이로 판단하는 방법도 있음
+ * /
 
+int count = 0;
+for (...) {
+    if (line.contains("FBI")) {
+        bw.write(i + " ");
+        count++;
+    }
+}
+if (count == 0) {
+    bw.write("HE GOT AWAY!");
+}
+
+---
+
+StringBuilder sb = new StringBuilder();
+for (...) {
+    if (line.contains("FBI")) {
+        sb.append(i).append(" ");
+    }
+}
+bw.write(sb.length() == 0 ? "HE GOT AWAY!" : sb.toString());
 ```

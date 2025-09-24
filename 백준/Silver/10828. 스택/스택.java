@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class Main {
+    /**
+     * 자료구조 - stack
+     */
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+
+        Stack<Integer> stack = new Stack<>();
+        int loop = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < loop; i++) {
+            st = new StringTokenizer(br.readLine());
+            String str = st.nextToken();
+
+            switch (str) {
+                case ("push"):
+                    int num = Integer.parseInt(st.nextToken());
+                    stack.push(num);
+                    break;
+
+                case ("pop"):
+                    if (stack.empty()) {
+                        bw.write(String.valueOf(-1));
+                    } else bw.write(String.valueOf(stack.pop()));
+                    bw.newLine();
+                    break;
+
+                case ("size"):
+                    bw.write(String.valueOf(stack.size()));
+                    bw.newLine();
+                    break;
+
+                case ("empty"):
+                    if (stack.empty()) {
+                        bw.write(String.valueOf(1));
+                    } else bw.write(String.valueOf(0));
+                    bw.newLine();
+                    break;
+
+                case ("top"):
+                    if (!stack.empty()) {
+                        bw.write(String.valueOf(stack.lastElement()));
+                    } else bw.write(String.valueOf(-1));
+                    bw.newLine();
+                    break;
+            }
+
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+}

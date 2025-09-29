@@ -14,7 +14,8 @@ public class Main {
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
 
-        System.out.println(gdc(a, b) + " " + lcm(a, b));
+        System.out.println(gdc(a, b));
+        System.out.println(lcm(a, b));
     }
 
     static int gdc(int a, int b) {
@@ -30,3 +31,6 @@ public class Main {
         return (a * b) / gdc(a, b);
     }
 }
+
+
+

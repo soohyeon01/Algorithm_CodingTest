@@ -8,7 +8,6 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        StringBuilder sb = new StringBuilder();
 
         String[] arr = new String[3]; // 각 줄을 저장할 문자열 배열
         arr[0] = br.readLine();
@@ -18,16 +17,13 @@ public class Main {
 
         for (int i = 0; i < arr.length; i++) {
             // 숫자 유무 확인 로직
-            if (arr[i].charAt(0) < 65) {    // 입력받은 각 문자열이 숫자라면?
+            if (arr[i].charAt(0) < 65) {
+                // 숫자가 있다면 인덱스 값으로 직접 숫자를 구함
                 int ans = Integer.parseInt(arr[i]) + (3 - i);
                 System.out.println(changeLogic(ans));
                 return;
             }
         }
-
-        // 숫자가 있다면 인덱스 값으로 직접 숫자를 구함
-
-//        System.out.println(sb);
     }
 
     private static String changeLogic(int ans) {
@@ -39,7 +35,7 @@ public class Main {
         } else if (ans % 3 == 0 && ans % 5 != 0) {
             result = "Fizz";
         } else result = String.valueOf(ans);
-        
+
         return result;
     }
 }

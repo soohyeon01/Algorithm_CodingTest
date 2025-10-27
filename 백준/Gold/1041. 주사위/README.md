@@ -2,7 +2,8 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1041) 
 
-![KakaoTalk_20251027_164100876](https://github.com/user-attachments/assets/3625eecd-d584-460b-bcc9-a448ab509451)
+<img width="806" height="776" alt="image" src="https://github.com/user-attachments/assets/c0af7bda-664e-4568-abfe-95e22cb295df" />
+
 
 ### 성능 요약
 

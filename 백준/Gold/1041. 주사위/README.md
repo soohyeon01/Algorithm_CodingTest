@@ -2,8 +2,7 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1041) 
 
-![Uploading KakaoTalk_20251027_164100876.jpg…]()
-
+![KakaoTalk_20251027_164100876](https://github.com/user-attachments/assets/3625eecd-d584-460b-bcc9-a448ab509451)
 
 ### 성능 요약
 

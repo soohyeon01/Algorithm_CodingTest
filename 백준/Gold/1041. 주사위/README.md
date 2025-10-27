@@ -2,6 +2,9 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1041) 
 
+![Uploading KakaoTalk_20251027_164100876.jpg…]()
+
+
 ### 성능 요약
 
 메모리: 14336 KB, 시간: 104 ms

@@ -34,23 +34,24 @@ public class Main {
         visited = new boolean[n + 1];
         dfs(1);
 
-        System.out.println(cnt_dfs);
+        System.out.println(cnt_dfs - 1); // 1을 제외한 노드의 개수를 구해야함
 
 /*
         visited = new boolean[n + 1];
         visited[1] = true;
         bfs(1);
-        System.out.println(cnt_bfs-1);  // 1을 제외한 노드의 개수를 구해야함
+        System.out.println(cnt_bfs-1);
 */
 
     }
 
     private static void dfs(int node) {
         visited[node] = true;
+        cnt_dfs++;
+
         for (int next : graph[node]) {
             if (!visited[next]) {
                 dfs(next);
-                cnt_dfs++;
             }
         }
 

@@ -9,7 +9,8 @@ public class Main {
     static ArrayList<Integer>[] graph;
     static boolean[] visited;
     static int cnt_dfs = 0;
-    static int cnt_bfs = 0;
+//    static int cnt_bfs = 0;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -30,18 +31,31 @@ public class Main {
             graph[b].add(a);
         }
 
-//        visited = new boolean[n + 1];
-//        dfs(1);
+        visited = new boolean[n + 1];
+        dfs(1);
 
+        System.out.println(cnt_dfs);
+
+/*
         visited = new boolean[n + 1];
         visited[1] = true;
         bfs(1);
+        System.out.println(cnt_bfs-1);  // 1을 제외한 노드의 개수를 구해야함
+*/
 
-
-//        System.out.println(cnt_dfs);
-        System.out.println(cnt_bfs-1);
     }
 
+    private static void dfs(int node) {
+        visited[node] = true;
+        for (int next : graph[node]) {
+            if (!visited[next]) {
+                dfs(next);
+                cnt_dfs++;
+            }
+        }
+
+    }
+/*
     private static void bfs(int i) {
         Queue<Integer> q = new LinkedList<>();
         q.add(i);
@@ -58,15 +72,5 @@ public class Main {
             }
         }
     }
-
-//    private static void dfs(int node) {
-//        visited[node] = true;
-//        for (int next : graph[node]) {
-//            if (!visited[next]) {
-//                dfs(next);
-//                cnt_dfs++;
-//            }
-//        }
-//
-//    }
+*/
 }

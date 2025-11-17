@@ -30,43 +30,43 @@ public class Main {
             graph[b].add(a);
         }
 
-        visited = new boolean[n + 1];
-        dfs(1);
-//
 //        visited = new boolean[n + 1];
-//        visited[1] = true;
-//        bfs(1);
+//        dfs(1);
+
+        visited = new boolean[n + 1];
+        visited[1] = true;
+        bfs(1);
 
 
-        System.out.println(cnt_dfs);
-//        System.out.println(cnt_bfs-1);
+//        System.out.println(cnt_dfs);
+        System.out.println(cnt_bfs-1);
     }
 
-//    private static void bfs(int i) {
-//        Queue<Integer> q = new LinkedList<>();
-//        q.add(i);
-//
-//        while (!q.isEmpty()) {
-//            int node = q.poll();
-//            cnt_bfs++;
-//
-//            for (int next : graph[node]) {
-//                if (!visited[next]) {
-//                    q.add(next);
-//                    visited[next] = true;
-//                }
-//            }
-//        }
-//    }
+    private static void bfs(int i) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(i);
 
-    private static void dfs(int node) {
-        visited[node] = true;
-        for (int next : graph[node]) {
-            if (!visited[next]) {
-                dfs(next);
-                cnt_dfs++;
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            cnt_bfs++;
+
+            for (int next : graph[node]) {
+                if (!visited[next]) {
+                    q.add(next);
+                    visited[next] = true;
+                }
             }
         }
-
     }
+
+//    private static void dfs(int node) {
+//        visited[node] = true;
+//        for (int next : graph[node]) {
+//            if (!visited[next]) {
+//                dfs(next);
+//                cnt_dfs++;
+//            }
+//        }
+//
+//    }
 }

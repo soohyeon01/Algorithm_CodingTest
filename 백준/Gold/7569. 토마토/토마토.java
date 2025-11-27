@@ -17,8 +17,8 @@ public class Main {
 
     // 익은 토마토의 전염(?) 방향 - 위 아래 좌 우 앞 뒤 순서
     static int[] dz = {1, -1, 0, 0, 0, 0};
-    static int[] dx = {0, 0, -1, 1, 0, 0};
-    static int[] dy = {0, 0, 0, 0, -1, 1};
+    static int[] dy = {0, 0, -1, 1, 0, 0};
+    static int[] dx = {0, 0, 0, 0, -1, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -53,20 +53,20 @@ public class Main {
         while (!q.isEmpty()) {
             int[] tomato = q.poll();
             int z = tomato[0];
-            int x = tomato[1];
-            int y = tomato[2];
+            int y = tomato[1];
+            int x = tomato[2];
 
             for (int dir = 0; dir < 6; dir++) {
                 int nz = z + dz[dir];
-                int nx = x + dx[dir];
                 int ny = y + dy[dir];
+                int nx = x + dx[dir];
 
                 // 범위를 벗어날 경우 패스
-                if (nx < 0 || ny < 0 || nz < 0 || nx >= n || ny >= m || nz >= h) continue;
+                if (nx < 0 || ny < 0 || nz < 0 || nx >= m || ny >= n || nz >= h) continue;
 
-                if (box[nz][nx][ny] == 0) {
-                    box[nz][nx][ny] = box[z][x][y] + 1; // 나를 익게 만들어준(?) 토마토 +1
-                    q.add(new int[]{nz, nx, ny});
+                if (box[nz][ny][nx] == 0) {
+                    box[nz][ny][nx] = box[z][y][x] + 1; // 나를 익게 만들어준(?) 토마토 +1
+                    q.add(new int[]{nz, ny, nx});
                 }
             }
         }

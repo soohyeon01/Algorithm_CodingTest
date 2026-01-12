@@ -16,7 +16,6 @@ public class Main {
     static Queue<int[]> q = new LinkedList<>();
     static StringBuilder sb = new StringBuilder();
 
-
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
 
@@ -34,8 +33,8 @@ public class Main {
             for (int j = 0; j < m; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
                 dist[i][j] = -1;
-                
-                if (map[i][j] == 2) {
+
+                if (map[i][j] == 2) { // 시작점을 큐에 넣어줌
                     q.add(new int[]{i, j});
                     dist[i][j] = 0;
                 }
@@ -73,7 +72,7 @@ public class Main {
 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
 
-                if (map[nx][ny] == 1 && dist[nx][ny] ==-1) {
+                if (map[nx][ny] == 1 && dist[nx][ny] == -1) { // 갈 수 있는 땅이고 아직 방문하지 않은 땅일 때, 
                     dist[nx][ny] = dist[x][y] + 1;
                     q.add(new int[]{nx, ny});
                 }

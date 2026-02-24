@@ -20,9 +20,10 @@ public class Main {
 
         // 정점의 개수 입력
         N = Integer.parseInt(br.readLine());
+
         // result 배열 초기화
         result = new int[N][N];
-        
+
         // 그래프 초기화
         graph = new ArrayList[N];
         for (int i = 0; i < N; i++) {
@@ -39,7 +40,7 @@ public class Main {
                 }
             }
         }
-        
+
         // 모든 정점에서 bfs 실행
         for (int i = 0; i < N; i++) {
             bfs(i);
@@ -52,6 +53,35 @@ public class Main {
             sb.append("\n");
         }
 
+/*        // 플로이드 - 워셜
+        int[][] graphF = new int[N][N];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < N; j++) {
+                graphF[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        for (int k = 0; k < N; k++) {
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    if (graphF[i][k] == 1 && graphF[k][j] == 1) {
+                        graphF[i][j] = 1;
+                    }
+                }
+            }
+        }
+        
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                sb.append(graphF[i][j]).append(" ");
+            }
+            sb.append("\n");
+        }
+        
+*/
+
         System.out.println(sb);
     }
 
@@ -59,7 +89,7 @@ public class Main {
 
         // 시작점이 달라질 때마다 visited 배열 새로 만들기
         boolean[] visited = new boolean[N];
-        
+
         // bfs에 필요한 큐 생성
         Queue<Integer> queue = new ArrayDeque<>();
 

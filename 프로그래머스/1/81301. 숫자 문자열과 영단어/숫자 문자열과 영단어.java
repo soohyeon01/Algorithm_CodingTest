@@ -1,6 +1,9 @@
 import java.util.Map;
 
 class Solution {
+
+    // Map 구조를 사용하는 것이 명확하게 관계를 드러낸다 생각하여 선택함
+    
     public int solution(String s) {
 
         // map 구조로 숫자와 문자를 짝지어서 대체하는 방법 고안

@@ -2,7 +2,7 @@ import java.util.Map;
 
 class Solution {
 
-    // Map 구조를 사용하는 것이 명확하게 관계를 드러낸다 생각하여 선택함
+    // Map 구조를 사용하는 것이 명확하게 관계를 드러낸다 생각하여 선택
     
     public int solution(String s) {
 

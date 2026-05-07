@@ -19,31 +19,30 @@ class Solution {
         int next;
         int type;
 
-
         public Node(int next, int type) {
             this.next = next;
             this.type = type;
         }
     }
 
-    static int answer = 0;
+    // 여러 메서드에서 쓰는 변수는 static으로 선언
+    static int ans = 0;
     static int k;
 
+    // Node 타입 그래프 생성
     static ArrayList<Node>[] graph;
 
     public int solution(int n, int infection, int[][] edges, int k) {
 
-        Solution.k = k;
+        this.k = k;
 
         // 1. 양방향 그래프 생성
         graph = new ArrayList[n + 1];
-
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
 
         for (int[] edge : edges) {
-
             int x = edge[0];
             int y = edge[1];
             int type = edge[2];
@@ -54,27 +53,25 @@ class Solution {
 
         // 2. 감염 확인
         boolean[] infected = new boolean[n + 1];
-
-        // 감염된 노드 저장
         infected[infection] = true;
-        
+
         // 3. dfs 시작 (depth: 1~k)
         // k가 문제에서 주어지기 때문에 dfs로 시작
         dfs(0, infected);
 
-        return answer;
+        return ans;
     }
 
     private void dfs(int depth, boolean[] infected) {
 
         // 현재 감염된 노드의 수
-        int count = 0;
-
+        int cnt = 0;
         for (boolean b : infected) {
-            if(b) count++;
+            if (b) cnt++;
         }
 
-        answer = Math.max(answer, count);
+        // dfs 내부에서 도출된 cnt 값과 이전 ans 값을 비교해 최댓값을 ans로 저장
+        ans = Math.max(cnt, ans);
 
         // 최대 depth에 도달하면 탐색 종료
         if (depth == k) {
@@ -85,45 +82,54 @@ class Solution {
         for (int type = 1; type <= 3; type++) {
 
             // 1, 2, 3 이 독립적인 경우이기 때문에, 백트래킹을 위해 클론 배열 생성
-            boolean[] nextInfected = infected.clone(); 
+            boolean[] nextInfected = infected.clone();
 
             // bfs
-            Queue<Integer> queue = new LinkedList<>();
-
-            // 모든 감염된 노드가 시작점이 됨
-            for (int i = 1; i < infected.length; i++) {
-                if (nextInfected[i]) {
-                    queue.add(i);
-                }
-            }
-
-            while (!queue.isEmpty()) {
-
-                int cur = queue.poll();
-
-                for (Node node : graph[cur]) {
-
-                    int next = node.next;
-                    int pipeType = node.type;
-
-                    // type이 1~3으로 저정되어 있으므로, pipe type이 같지 않으면 전염 불가
-                    if (pipeType != type) {
-                        continue;
-                    }
-
-                    // 다음 노드도 감염된 노드일 경우 건너뜀
-                    if (nextInfected[next]) {
-                        continue;
-                    }
-
-                    // 현재 노드와 다음 노드의 파이프타입이 같고 다음 노드가 감염되지 않은 상태라면 감염으로 상태를 바꿈
-                    nextInfected[next] = true;
-
-                    queue.add(next);
-                }
-            }
+            bfs(nextInfected, type);
 
             dfs(depth + 1, nextInfected);
+
         }
     }
+
+    private static void bfs(boolean[] nextInfected, int type) {
+        Queue<Integer> queue = new LinkedList<>();
+
+        // 모든 감염된 노드가 시작점이 됨
+        for (int i = 1; i < nextInfected.length; i++) {
+            if (nextInfected[i]) {
+                queue.add(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+
+            int cur = queue.poll();
+
+            for (Node node : graph[cur]) {
+
+                int next = node.next;
+                int pipeType = node.type;
+
+                // type이 1~3으로 저정되어 있으므로, pipe type이 같지 않으면 전염 불가
+                if (pipeType != type) {
+                    continue;
+                }
+
+                // 다음 노드도 감염된 노드일 경우 건너뜀
+                if (nextInfected[next]) {
+                    continue;
+                }
+
+                // 현재 노드와 다음 노드의 파이프타입이 같고 다음 노드가 감염되지 않은 상태라면 감염으로 상태를 바꿈
+                nextInfected[next] = true;
+
+                queue.add(next);
+            }
+        }
+
+    }
 }
+
+
+

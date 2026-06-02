@@ -23,8 +23,6 @@ class Solution {
 
     private boolean isPrime(int sum) {
 
-        // 1이면 소수 -> 세 개의 숫자의 합은 항상 3이상
-
         for (int i = 2; i * i <= sum; i++) {
             // 약수가 존재하면 false
             if (sum % i == 0) {

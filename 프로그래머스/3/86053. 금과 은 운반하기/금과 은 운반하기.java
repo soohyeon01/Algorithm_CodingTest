@@ -37,19 +37,19 @@ class Solution {
 
         for (int i = 0; i < city; i++) {
 
-            // 현재시간에서 왕복 가능한 횟수
+            // i번째 도시에서 왕복 가능한 횟수
             long cnt = time / (2L * t[i]);
             if (time % (2L * t[i]) >= t[i]) {
                 cnt++;
             }
 
-            // 운반 가능한 무게
+            // i번째 도시에서 운반 가능한 무게
             long cap = cnt * w[i];
 
-            // 운반 가능한 금의 무게
+            // 각 도시에서 운반 가능한 금의 무게 합
             gold += Math.min(g[i], cap);
 
-            // 운반 가능한 은의 무게
+            // 각 도시의 운반 가능한 은의 무게 합
             silver += Math.min(s[i], cap);
 
             // 실제로 가능한 총량

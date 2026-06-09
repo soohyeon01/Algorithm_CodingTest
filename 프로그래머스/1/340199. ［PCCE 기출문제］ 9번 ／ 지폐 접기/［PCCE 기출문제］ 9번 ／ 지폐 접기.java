@@ -8,24 +8,23 @@ class Solution {
     public int solution(int[] wallet, int[] bill) {
         int answer = 0;
 
-        int walletS = Math.min(wallet[0], wallet[1]);
-        int walletL = Math.max(wallet[0], wallet[1]);
-        int billS = Math.min(bill[0], bill[1]);
-        int billL = Math.max(bill[0], bill[1]);
+        while (min(wallet) < min(bill) || max(wallet) < max(bill)) {
 
-        while (walletS < billS || walletL < billL) {
-            billL /= 2;
-
-            // 지폐의 긴 쪽을 접었을 때 원래 짧은 쪽 보다 짧아지면 둘을 바꿈
-            if (billL < billS) {
-                int temp = billS;
-                billS = billL;
-                billL = temp;
-            }
+            if (bill[0] > bill[1]) {
+                bill[0] /= 2;
+            } else bill[1] /= 2;
 
             answer++;
-
         }
+        
         return answer;
+    }
+
+    private int max(int[] arr) {
+        return Math.max(arr[0], arr[1]);
+    }
+
+    private int min(int[] arr) {
+        return Math.min(arr[0], arr[1]);
     }
 }

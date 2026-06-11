@@ -32,10 +32,8 @@ class Solution {
             health += bandage[1] * t;
 
             // 최대를 넘으면 다시 최대 체력으로 복귀
-            if (health >= max) {
-                health = max;
-            }
-
+            health = Math.min(health, max);
+            
             // i시간에 몬스터에게 한번 공격 받음
             health -= attacks[i][1];
             if (health <= 0) {

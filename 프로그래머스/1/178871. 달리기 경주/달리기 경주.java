@@ -19,14 +19,16 @@ class Solution {
 
         for (int i = 0; i < callings.length; i++) {
             int rank = map.get(callings[i]);
+            String curr = players[rank];
+            String front = players[rank - 1];
 
-            String temp = players[rank];
+            // arr - swap
             players[rank] = players[rank - 1];
-            players[rank - 1] = temp;
+            players[rank - 1] = curr;
 
-            map.replace(callings[i], rank - 1);
-            map.replace(players[rank], rank);
-            
+            // map - swap
+            map.put(curr, rank - 1);
+            map.replace(front, rank);
         }
 
         return players;
